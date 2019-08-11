@@ -1,4 +1,4 @@
-# Point-System Microservices
+# User-Action-Point-System Microservice
 
 **Note:** 
     * You will only need docker installed on your computer to run this app
@@ -15,12 +15,15 @@
 This build should work for both macOS and Linux
 
 1. Download docker for your operating system
-2. From project root run the following commands:
-    * **Build:** `docker build -t point-service .`
-    * **Run:** `docker run -d=true -p 8083:8083 point-service`
+2. From project root run the following commands to build and run the app:
+    * `docker-compose up --build`
+    
+## Swagger
+
+Swagger can be accessed through http://localhost:8083/swagger-ui.html
 
 ## Health Endpoint
 
 Confirm everything was ran correctly by going to the following endpoint: 
-    * http://localhost:8083/health/v1/marco
+  * http://localhost:8083/health/v1/marco
 
