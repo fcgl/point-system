@@ -35,7 +35,7 @@ public class DataPopulation {
     @PostConstruct
     public void init() {
         long userId = 99;
-        UserPoints userPoints = new UserPoints(userId, 10, 5);
+        UserPoint userPoints = new UserPoint(userId, 10, 5);
         userPointsRepository.save(userPoints);
 
         Action action = new Action("Adding a receipt");
@@ -44,7 +44,7 @@ public class DataPopulation {
         UserAction userAction = new UserAction(userId, action, 10);
         userActionRepository.save(userAction);
 
-        Trophy trophy = new Trophy(10, "/no/where", "King of Receipts", action);
+        Trophy trophy = new Trophy(10, "/no/where", "King of Receipts", action, 10);
         trophyRepository.save(trophy);
 
         UserTrophy userTrophy = new UserTrophy(userId, trophy);

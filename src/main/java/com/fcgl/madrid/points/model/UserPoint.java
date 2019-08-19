@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "user_points")
-public class UserPoints {
+@Table(name = "user_point")
+public class UserPoint {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -20,11 +20,11 @@ public class UserPoints {
     private Long createdAt;
     private Long updatedAt;
 
-    public UserPoints() {
+    public UserPoint() {
 
     }
 
-    public UserPoints(Long userId, int totalPoints, int tournamentPoints) {
+    public UserPoint(Long userId, int totalPoints, int tournamentPoints) {
         this.userId = userId;
         this.totalPoints = totalPoints;
         this.totalPoints = tournamentPoints;
@@ -79,7 +79,7 @@ public class UserPoints {
             return false;
         }
 
-        final UserPoints other = (UserPoints) obj;
+        final UserPoint other = (UserPoint) obj;
         if (!(this.id.equals(other.id))) {
             return false;
         }

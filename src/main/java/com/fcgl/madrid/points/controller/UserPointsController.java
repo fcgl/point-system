@@ -1,6 +1,6 @@
 package com.fcgl.madrid.points.controller;
 
-import com.fcgl.madrid.points.model.UserPoints;
+import com.fcgl.madrid.points.model.UserPoint;
 import com.fcgl.madrid.points.service.UserPointsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,7 @@ public class UserPointsController {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public List<UserPoints> findAll() {
+    public List<UserPoint> findAll() {
         return userPointsService.findAll();
     }
 }

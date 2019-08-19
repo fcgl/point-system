@@ -1,6 +1,6 @@
 package com.fcgl.madrid.points.service;
 
-import com.fcgl.madrid.points.model.UserPoints;
+import com.fcgl.madrid.points.model.UserPoint;
 import com.fcgl.madrid.points.repository.UserPointsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class UserPointsService {
         this.userPointsRepository = userPointsRepository;
     }
 
-    public List<UserPoints> findAll() {
+    public List<UserPoint> findAll() {
         return userPointsRepository.findAll();
     }
 }

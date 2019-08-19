@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "user_actions")
+@Table(name = "user_action")
 public class UserAction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

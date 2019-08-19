@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "trophies")
+@Table(name = "trophy")
 public class Trophy {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,6 +13,7 @@ public class Trophy {
     private int numberOfPoints;
     private String imageFileLocation;
     private String description;
+    private int action_count;
 
     @OneToOne
     @JoinColumn(name = "trophy_action_id")
@@ -26,13 +27,13 @@ public class Trophy {
 
     }
 
-    public Trophy(int numberOfPoints, String imageFileLocation, String description, Action action) {
+    public Trophy(int numberOfPoints, String imageFileLocation, String description, Action action, int action_count) {
         this.numberOfPoints = numberOfPoints;
         this.imageFileLocation = imageFileLocation;
         this.description = description;
 
         this.action = action;
-
+        this.action_count = action_count;
         this.createdAt = Instant.now().toEpochMilli();
         this.updatedAt = this.createdAt;
     }
@@ -127,5 +128,13 @@ public class Trophy {
     @Override
     public String toString() {
         return "Trophy: " + description;
+    }
+
+    public int getAction_count() {
+        return action_count;
+    }
+
+    public void setAction_count(int action_count) {
+        this.action_count = action_count;
     }
 }
