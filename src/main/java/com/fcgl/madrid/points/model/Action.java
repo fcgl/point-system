@@ -16,6 +16,9 @@ public class Action {
     private Long createdAt;
     private Long updatedAt;
 
+    @OneToOne(mappedBy = "action")
+    private ActionPoint actionPoint;
+
     public Action() {
 
     }

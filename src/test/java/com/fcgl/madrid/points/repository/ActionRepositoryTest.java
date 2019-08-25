@@ -1,6 +1,5 @@
-package com.fcgl.madrid.repository;
+package com.fcgl.madrid.points.repository;
 import com.fcgl.madrid.points.model.Action;
-import com.fcgl.madrid.points.repository.ActionRepository;
 import org.junit.Test;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
