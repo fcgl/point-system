@@ -1,4 +1,4 @@
-package com.fcgl.madrid.service;
+package com.fcgl.madrid.points.service;
 
 public class UserActionServiceTest {
 }

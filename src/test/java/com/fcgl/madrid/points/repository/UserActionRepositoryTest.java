@@ -1,4 +1,4 @@
-package com.fcgl.madrid.repository;
+package com.fcgl.madrid.points.repository;
 
 public class UserActionRepositoryTest {
 }
