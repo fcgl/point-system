@@ -1,5 +1,5 @@
 package com.fcgl.madrid.points.model;
-
+ 
 import javax.persistence.*;
 import java.time.Instant;
 
