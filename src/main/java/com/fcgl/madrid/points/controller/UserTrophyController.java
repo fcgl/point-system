@@ -19,26 +19,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/points/user_trophies/v1")
 public class UserTrophyController {
-    private UserTrophyService userTrophiesService;
+    private UserTrophyService userTrophyService;
 
     DevService devService;
 
+    @GetMapping("/userTrophies")
+    public List<UserTrophy> getUserTrophiesById(Long userId) {
+        return userTrophyService.getUserTrophiesById(userId);
+    }
+
     @Autowired
-    public void setPostService(UserTrophyService userTrophiesService) {
-        this.userTrophiesService = userTrophiesService;
+    public void setPostService(UserTrophyService userTrophyService) {
+        this.userTrophyService = userTrophyService;
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<UserTrophy> findAll() {
-        return userTrophiesService.findAll();
-    }
-    // 
-    // public List<UserTrophy> findAll() {
-    //     return userTrophyRepository.findAll();
-    // }
-
-    @GetMapping(value="/fallback")
-    public ResponseEntity<InternalStatus> failureWithFallback() {
-        return devService.failureWithFallback();
+        return userTrophyService.findAll();
     }
 }

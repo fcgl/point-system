@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface UserPointsRepository extends JpaRepository<UserPoint, Long> {
   @Query("SELECT u FROM UserPoint u WHERE u.userId = ?1")
-    List<UserPoint> findByID(Long id);
+    List<UserPoint> getUserPointsById(Long id);
 
 }

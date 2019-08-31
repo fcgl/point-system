@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface UserTrophyRepository extends JpaRepository<UserTrophy, Long> {
   @Query("SELECT u FROM UserTrophy u WHERE u.userId = ?1")
-    List<UserTrophy> findByID(Long id);
+    List<UserTrophy> getUserTrophiesById(Long id);
 }

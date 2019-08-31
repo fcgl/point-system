@@ -24,6 +24,11 @@ public class UserPointsController {
 
     DevService devService;
 
+    @GetMapping("/userPoints")
+    public List<UserPoint> getUserPointsById(Long userId) {
+    return userPointsService.getUserPointsById(userId);
+    }
+
     @Autowired
     public void setPostService(UserPointsService userPointsService) {
         this.userPointsService = userPointsService;
@@ -34,9 +39,5 @@ public class UserPointsController {
         return userPointsService.findAll();
     }
 
-    @GetMapping(value="/fallback")
-    public ResponseEntity<InternalStatus> failureWithFallback() {
-        return devService.failureWithFallback();
-    }
 
 }

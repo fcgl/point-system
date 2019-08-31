@@ -34,8 +34,9 @@ public class UserPointsService {
         return userPointsRepository.findAll();
     }
 
-    // @CircuitBreaker(name = "backendA", fallbackMethod = "fallback")
-    // public ResponseEntity<InternalStatus>
+    public List<UserPoint>getUserPointsById(Long userId) {
+      return userPointsRepository.getUserPointsById(userId);
+    }
 
     /**
     *@param

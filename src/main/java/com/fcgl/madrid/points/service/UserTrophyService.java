@@ -34,6 +34,10 @@ public class UserTrophyService {
         return userTrophyRepository.findAll();
     }
 
+    public List<UserTrophy>getUserTrophiesById(Long userId) {
+      return userTrophyRepository.getUserTrophiesById(userId);
+    }
+
     // @CircuitBreaker(name = "backendA", fallbackMethod = "fallback")
     // public ResponseEntity<InternalStatus>
 
