@@ -2,10 +2,17 @@ package com.fcgl.madrid.points.controller;
 
 import com.fcgl.madrid.points.model.UserTrophy;
 import com.fcgl.madrid.points.service.UserTrophyService;
+import com.fcgl.madrid.points.repository.UserTrophyRepository;
+import com.fcgl.madrid.points.model.InternalStatus;
+import com.fcgl.madrid.dev.DevService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -13,6 +20,8 @@ import java.util.List;
 @RequestMapping("/points/user_trophies/v1")
 public class UserTrophyController {
     private UserTrophyService userTrophiesService;
+
+    DevService devService;
 
     @Autowired
     public void setPostService(UserTrophyService userTrophiesService) {
@@ -22,5 +31,14 @@ public class UserTrophyController {
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<UserTrophy> findAll() {
         return userTrophiesService.findAll();
+    }
+    // 
+    // public List<UserTrophy> findAll() {
+    //     return userTrophyRepository.findAll();
+    // }
+
+    @GetMapping(value="/fallback")
+    public ResponseEntity<InternalStatus> failureWithFallback() {
+        return devService.failureWithFallback();
     }
 }
