@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import java.time.Instant;
 
 @Entity
-@Table(name = "actionPoint")
+@Table(name = "action_point")
 public class ActionPoint {
 
     @Id
