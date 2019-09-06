@@ -25,7 +25,7 @@ public class UserPointsController {
     DevService devService;
 
     @GetMapping("/userPoints")
-    public List<UserPoint> getUserPointsById(Long userId) {
+    public UserPoint getUserPointsById(Long userId) {
     return userPointsService.getUserPointsById(userId);
     }
 

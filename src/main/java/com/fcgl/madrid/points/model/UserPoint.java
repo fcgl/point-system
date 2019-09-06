@@ -1,5 +1,5 @@
 package com.fcgl.madrid.points.model;
- 
+
 import javax.persistence.*;
 import java.time.Instant;
 
@@ -27,7 +27,7 @@ public class UserPoint {
     public UserPoint(Long userId, int totalPoints, int tournamentPoints) {
         this.userId = userId;
         this.totalPoints = totalPoints;
-        this.totalPoints = tournamentPoints;
+        this.tournamentPoints = tournamentPoints;
 
         this.createdAt = Instant.now().toEpochMilli();
         this.updatedAt = this.createdAt;
