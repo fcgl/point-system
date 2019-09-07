@@ -1,6 +1,7 @@
 package com.fcgl.madrid.points.controller;
 
 import com.fcgl.madrid.points.model.UserPoint;
+import com.fcgl.madrid.points.model.response.GetUserPointsResponse;
 import com.fcgl.madrid.points.service.UserPointsService;
 import com.fcgl.madrid.points.model.InternalStatus;
 import com.fcgl.madrid.dev.DevService;
@@ -21,12 +22,13 @@ import java.util.List;
 @RequestMapping("/points/user_points/v1")
 public class UserPointsController {
     private UserPointsService userPointsService;
+    private GetUserPointsResponse getUserPointResponse;
 
     DevService devService;
 
     @GetMapping("/userPoints")
-    public UserPoint getUserPointsById(Long userId) {
-    return userPointsService.getUserPointsById(userId);
+    public GetUserPointsResponse getUserPointsById(Long userId) {
+        return userPointsService.getUserPointsById(userId);
     }
 
     @Autowired

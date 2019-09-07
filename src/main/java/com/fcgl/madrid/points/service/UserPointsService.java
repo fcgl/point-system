@@ -28,19 +28,21 @@ import java.lang.StringBuilder;
 @Service
 public class UserPointsService {
 	private UserPointsRepository userPointsRepository;
+	private GetUserPointsResponse getUserPointResponse;
 
 	@Autowired
 	public UserPointsService(UserPointsRepository userPointsRepository) {
 		this.userPointsRepository = userPointsRepository;
 	}
 
-	@CircuitBreaker(name = "backendA", fallbackMethod = "fallback")
 	public List<UserPoint> findAll() {
 		return userPointsRepository.findAll();
 	}
 
-	public UserPoint getUserPointsById(Long userId) {
-		return userPointsRepository.getUserPointsById(userId);
+	@CircuitBreaker(name = "backendA", fallbackMethod = "fallback")
+	public GetUserPointsResponse getUserPointsById(Long userId) {
+		getUserPointResponse.setUserPoint(userPointsRepository.getUserPointsById(userId));
+		return getUserPointResponse;
 	}
 
 	/**

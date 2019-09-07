@@ -1,5 +1,6 @@
 package com.fcgl.madrid.points.controller;
 
+import com.fcgl.madrid.points.model.response.GetUserTrophyResponse;
 import com.fcgl.madrid.points.model.UserTrophy;
 import com.fcgl.madrid.points.service.UserTrophyService;
 import com.fcgl.madrid.points.repository.UserTrophyRepository;
@@ -24,7 +25,7 @@ public class UserTrophyController {
     DevService devService;
 
     @GetMapping("/userTrophies")
-    public List<UserTrophy> getUserTrophiesById(Long userId) {
+    public GetUserTrophyResponse getUserTrophiesById(Long userId) {
         return userTrophyService.getUserTrophiesById(userId);
     }
 
