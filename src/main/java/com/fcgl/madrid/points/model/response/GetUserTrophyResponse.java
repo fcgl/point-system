@@ -34,7 +34,7 @@ public class GetUserTrophyResponse {
         this.status = status;
     }
 
-    public void setTrophy(UserTrophy userTrophy) {
+    public void setUserTrophy(UserTrophy userTrophy) {
         this.userTrophy = userTrophy;
     }
 
