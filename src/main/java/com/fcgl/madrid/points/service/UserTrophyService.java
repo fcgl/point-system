@@ -29,7 +29,6 @@ import java.util.ArrayList;
 @Service
 public class UserTrophyService {
 	private UserTrophyRepository userTrophyRepository;
-	private GetUserTrophyResponse getUserTrophyResponse;
 
 	@Autowired
 	public UserTrophyService(UserTrophyRepository userTrophyRepository) {
@@ -40,9 +39,9 @@ public class UserTrophyService {
 		return userTrophyRepository.findAll();
 	}
 
+	@CircuitBreaker(name = "backendA", fallbackMethod = "fallback")
 	public GetUserTrophyResponse getUserTrophiesById(Long userId) {
-		getUserTrophyResponse.setUserTrophies(userTrophyRepository.getUserTrophiesById(userId));
-		return getUserTrophyResponse;
+		return new GetUserTrophyResponse(InternalStatus.OK,	userTrophyRepository.getUserTrophiesById(userId));
 	}
 
 
@@ -55,7 +54,7 @@ public class UserTrophyService {
 	private ResponseEntity<GetUserTrophyResponse> fallback(Long userId, Exception ex) {
 		String message = "Fallback: " + ex.getMessage();
 		InternalStatus internalStatus = new InternalStatus(StatusCode.UNKNOWN, 500, message);
-		GetUserTrophyResponse postResponse = new GetUserTrophyResponse(internalStatus, null, null);
+		GetUserTrophyResponse postResponse = new GetUserTrophyResponse(internalStatus, null);
 		return new ResponseEntity<GetUserTrophyResponse>(postResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 

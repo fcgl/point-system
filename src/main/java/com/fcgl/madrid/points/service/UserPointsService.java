@@ -28,7 +28,6 @@ import java.lang.StringBuilder;
 @Service
 public class UserPointsService {
 	private UserPointsRepository userPointsRepository;
-	private GetUserPointsResponse getUserPointResponse;
 
 	@Autowired
 	public UserPointsService(UserPointsRepository userPointsRepository) {
@@ -41,8 +40,7 @@ public class UserPointsService {
 
 	@CircuitBreaker(name = "backendA", fallbackMethod = "fallback")
 	public GetUserPointsResponse getUserPointsById(Long userId) {
-		getUserPointResponse.setUserPoint(userPointsRepository.getUserPointsById(userId));
-		return getUserPointResponse;
+		return  new GetUserPointsResponse(InternalStatus.OK, userPointsRepository.getUserPointsById(userId));
 	}
 
 	/**
@@ -54,7 +52,7 @@ public class UserPointsService {
 	private ResponseEntity<GetUserPointsResponse> fallback(Long userId, Exception ex) {
 		String message = "Fallback: " + ex.getMessage();
 		InternalStatus internalStatus = new InternalStatus(StatusCode.UNKNOWN, 500, message);
-		GetUserPointsResponse postResponse = new GetUserPointsResponse(internalStatus, null);
+		GetUserPointsResponse postResponse = new GetUserPointsResponse(internalStatus, getUserPointsById(userId).getUserPoint());
 		return new ResponseEntity<GetUserPointsResponse>(postResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 

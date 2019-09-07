@@ -9,21 +9,15 @@ import java.util.List;
 
 public class GetUserTrophyResponse {
     private InternalStatus status;
-    private UserTrophy userTrophy;
     private List<UserTrophy> userTrophies;
 
-    public GetUserTrophyResponse(InternalStatus status, UserTrophy userTrophy, List<UserTrophy> userTrophies) {
+    public GetUserTrophyResponse(InternalStatus status, List<UserTrophy> userTrophies) {
         this.status = status;
-        this.userTrophy = userTrophy;
         this.userTrophies = userTrophies;
     }
 
     public InternalStatus getStatus() {
         return this.status;
-    }
-
-    public UserTrophy geUserTrophy() {
-        return this.userTrophy;
     }
 
     public List<UserTrophy> getUserTrophies() {
@@ -32,10 +26,6 @@ public class GetUserTrophyResponse {
 
     public void setStatus(InternalStatus status) {
         this.status = status;
-    }
-
-    public void setUserTrophy(UserTrophy userTrophy) {
-        this.userTrophy = userTrophy;
     }
 
     public void setUserTrophies(List<UserTrophy> userTrophies) {
