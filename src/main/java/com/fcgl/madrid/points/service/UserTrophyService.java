@@ -40,8 +40,9 @@ public class UserTrophyService {
 	}
 
 	@CircuitBreaker(name = "backendA", fallbackMethod = "fallback")
-	public GetUserTrophyResponse getUserTrophiesById(Long userId) {
-		return new GetUserTrophyResponse(InternalStatus.OK,	userTrophyRepository.getUserTrophiesById(userId));
+	public ResponseEntity<GetUserTrophyResponse> getUserTrophiesById(Long userId) {
+		GetUserTrophyResponse getUserTrophyResponse = new GetUserTrophyResponse(InternalStatus.OK, userTrophyRepository.getUserTrophiesById(userId));
+		return new ResponseEntity<GetUserTrophyResponse>(getUserTrophyResponse,	HttpStatus.OK);
 	}
 
 	private ResponseEntity<GetUserTrophyResponse> fallback(Long userId, Exception ex) {

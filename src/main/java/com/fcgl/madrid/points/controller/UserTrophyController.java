@@ -25,7 +25,7 @@ public class UserTrophyController {
     DevService devService;
 
     @GetMapping("/userTrophies")
-    public GetUserTrophyResponse getUserTrophiesById(Long userId) {
+    public ResponseEntity<GetUserTrophyResponse> getUserTrophiesById(Long userId) {
         return userTrophyService.getUserTrophiesById(userId);
     }
 

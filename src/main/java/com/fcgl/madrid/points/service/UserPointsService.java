@@ -39,14 +39,16 @@ public class UserPointsService {
 	}
 
 	@CircuitBreaker(name = "backendA", fallbackMethod = "fallback")
-	public GetUserPointsResponse getUserPointsById(Long userId) {
-		return  new GetUserPointsResponse(InternalStatus.OK, userPointsRepository.getUserPointsById(userId));
+	public ResponseEntity<GetUserPointsResponse> getUserPointsById(Long userId) {
+		GetUserPointsResponse getUserPointResponse = new GetUserPointsResponse(InternalStatus.OK, userPointsRepository.getUserPointsById(userId));
+		return  new ResponseEntity<GetUserPointsResponse>(getUserPointResponse, HttpStatus.OK);
 	}
 
 	private ResponseEntity<GetUserPointsResponse> fallback(Long userId, Exception ex) {
 		String message = "Fallback: " + ex.getMessage();
 		InternalStatus internalStatus = new InternalStatus(StatusCode.UNKNOWN, 500, message);
-		GetUserPointsResponse postResponse = new GetUserPointsResponse(internalStatus, getUserPointsById(userId).getUserPoint());
+		UserPoint userPoint = getUserPointsById(userId).getBody().getUserPoint();
+		GetUserPointsResponse postResponse = new GetUserPointsResponse(internalStatus, userPoint);
 		return new ResponseEntity<GetUserPointsResponse>(postResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 

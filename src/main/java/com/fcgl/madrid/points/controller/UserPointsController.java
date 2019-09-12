@@ -27,7 +27,7 @@ public class UserPointsController {
     DevService devService;
 
     @GetMapping("/userPoints")
-    public GetUserPointsResponse getUserPointsById(Long userId) {
+    public ResponseEntity<GetUserPointsResponse> getUserPointsById(Long userId) {
         return userPointsService.getUserPointsById(userId);
     }
 
