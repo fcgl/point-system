@@ -44,13 +44,6 @@ public class UserTrophyService {
 		return new GetUserTrophyResponse(InternalStatus.OK,	userTrophyRepository.getUserTrophiesById(userId));
 	}
 
-
-	/**
-	 *
-	 * @param ex Exception
-	 * @return ResponseEntity<InternalStatus>
-	 */
-	@CircuitBreaker(name = "backendA", fallbackMethod = "fallback")
 	private ResponseEntity<GetUserTrophyResponse> fallback(Long userId, Exception ex) {
 		String message = "Fallback: " + ex.getMessage();
 		InternalStatus internalStatus = new InternalStatus(StatusCode.UNKNOWN, 500, message);
