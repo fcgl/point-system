@@ -12,7 +12,7 @@ public class Trophy extends AuditModel {
     private int numberOfPoints;
     private String imageFileLocation;
     private String description;
-    private int action_count;
+    private int actionCount;
 
     @OneToOne
     @JoinColumn(name = "trophy_action_id")
@@ -22,12 +22,13 @@ public class Trophy extends AuditModel {
 
     }
 
-    public Trophy(int numberOfPoints, String imageFileLocation, String description, Action action, int action_count) {
+    public Trophy(int numberOfPoints, String imageFileLocation, String description, Action action, int actionCount) {
         this.numberOfPoints = numberOfPoints;
         this.imageFileLocation = imageFileLocation;
         this.description = description;
 
         this.action = action;
+        this.actionCount = actionCount;
     }
 
     public Long getId() {
@@ -106,11 +107,11 @@ public class Trophy extends AuditModel {
         return "Trophy: " + description;
     }
 
-    public int getAction_count() {
-        return action_count;
+    public int getActionCount() {
+        return actionCount;
     }
 
-    public void setAction_count(int action_count) {
-        this.action_count = action_count;
+    public void setActionCount(int actionCount) {
+        this.actionCount = actionCount;
     }
 }
