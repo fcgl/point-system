@@ -28,11 +28,11 @@ public class DataPopulation {
     @PostConstruct
     public void init() {
         // Action #1
-        Action addingAReceipt = new Action("Adding a receipt");
+        Action addingAReceipt = new Action("Adding a receipt", 5);
         actionRepository.save(addingAReceipt);
 
         // Action #2
-        Action recommendingToAFriend = new Action("Recommending to a friend");
+        Action recommendingToAFriend = new Action("Recommending to a friend", 10);
         actionRepository.save(recommendingToAFriend);
 
         // Trophy #1, the user has to do action #1 x3 times to earn this trophy

@@ -1,11 +1,10 @@
 package com.fcgl.madrid.points.model;
 
 import javax.persistence.*;
-import java.time.Instant;
 
 @Entity
 @Table(name = "user_trophy")
-public class UserTrophy {
+public class UserTrophy extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,20 +15,16 @@ public class UserTrophy {
     @JoinColumn(name = "user_trophy_id")
     private Trophy trophy;
 
-    // TODO: add @PrePersist & @PreUpdate
-    private Long createdAt;
-    private Long updatedAt;
+    private int count;
 
     public UserTrophy() {
 
     }
 
-    public UserTrophy(Long userId, Trophy trophy) {
+    public UserTrophy(Long userId, Trophy trophy, int count) {
         this.userId = userId;
         this.trophy = trophy;
-
-        this.createdAt = Instant.now().toEpochMilli();
-        this.updatedAt = createdAt;
+        this.count = count;
     }
 
     public Long getId() {
@@ -52,12 +47,12 @@ public class UserTrophy {
         this.trophy = trophy;
     }
 
-    public Long getCreatedAt() {
-        return createdAt;
+    public int getCount() {
+        return count;
     }
 
-    public Long getUpdatedAt() {
-        return updatedAt;
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override
