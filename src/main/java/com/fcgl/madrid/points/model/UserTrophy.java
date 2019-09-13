@@ -7,7 +7,7 @@ import java.time.Instant;
 @Table(name = "user_trophy")
 public class UserTrophy {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long userId;

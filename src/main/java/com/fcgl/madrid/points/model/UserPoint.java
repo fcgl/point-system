@@ -7,7 +7,7 @@ import java.time.Instant;
 @Table(name = "user_point")
 public class UserPoint {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
