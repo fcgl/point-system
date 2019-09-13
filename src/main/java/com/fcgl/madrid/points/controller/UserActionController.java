@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/points/user_actions/v1")
+@RequestMapping("/points/user_action/v1")
 public class UserActionController {
     private UserActionService userActionsService;
 
