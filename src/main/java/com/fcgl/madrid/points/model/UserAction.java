@@ -1,13 +1,12 @@
 package com.fcgl.madrid.points.model;
 
 import javax.persistence.*;
-import java.time.Instant;
 
 @Entity
 @Table(name = "user_action")
-public class UserAction {
+public class UserAction extends AuditModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long userId;
@@ -19,10 +18,6 @@ public class UserAction {
     // The number of times the action has happened
     private int count;
 
-    // TODO: add @PrePersist & @PreUpdate
-    private Long createdAt;
-    private Long updatedAt;
-
     public UserAction() {
 
     }
@@ -31,9 +26,6 @@ public class UserAction {
         this.userId = userId;
         this.action = action;
         this.count = count;
-
-        this.createdAt = Instant.now().toEpochMilli();
-        this.updatedAt = this.createdAt;
     }
 
     public Long getId() {
@@ -64,14 +56,6 @@ public class UserAction {
         this.count = count;
     }
 
-    public Long getCreatedAt() {
-        return createdAt;
-    }
-
-    public Long getUpdatedAt() {
-        return updatedAt;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -95,15 +79,7 @@ public class UserAction {
             return false;
         }
 
-        if (!(this.count == other.count)) {
-            return false;
-        }
-
-        if (!(this.createdAt.equals(other.createdAt))) {
-            return false;
-        }
-
-        return (this.updatedAt.equals(other.updatedAt));
+        return this.count == other.count;
     }
 
     @Override

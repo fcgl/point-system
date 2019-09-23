@@ -1,13 +1,12 @@
 package com.fcgl.madrid.points.model;
 
 import javax.persistence.*;
-import java.time.Instant;
 
 @Entity
 @Table(name = "user_point")
-public class UserPoint {
+public class UserPoint extends AuditModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
@@ -16,10 +15,6 @@ public class UserPoint {
     private int totalPoints; // TODO: do we need history of points?
     private int tournamentPoints;
 
-    // TODO: add @PrePersist & @PreUpdate
-    private Long createdAt;
-    private Long updatedAt;
-
     public UserPoint() {
 
     }
@@ -27,10 +22,7 @@ public class UserPoint {
     public UserPoint(Long userId, int totalPoints, int tournamentPoints) {
         this.userId = userId;
         this.totalPoints = totalPoints;
-        this.totalPoints = tournamentPoints;
-
-        this.createdAt = Instant.now().toEpochMilli();
-        this.updatedAt = this.createdAt;
+        this.tournamentPoints = tournamentPoints;
     }
 
     public Long getId() {
@@ -61,14 +53,6 @@ public class UserPoint {
         this.tournamentPoints = tournamentPoints;
     }
 
-    public Long getCreatedAt() {
-        return createdAt;
-    }
-
-    public Long getUpdatedAt() {
-        return updatedAt;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -92,15 +76,7 @@ public class UserPoint {
             return false;
         }
 
-        if (!(this.tournamentPoints == other.tournamentPoints)) {
-            return false;
-        }
-
-        if (!(this.createdAt.equals(other.createdAt))) {
-            return false;
-        }
-
-        return (this.updatedAt.equals(other.updatedAt));
+        return tournamentPoints == other.tournamentPoints;
     }
 
     @Override

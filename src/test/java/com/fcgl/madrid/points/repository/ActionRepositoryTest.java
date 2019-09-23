@@ -1,11 +1,13 @@
 package com.fcgl.madrid.points.repository;
+
 import com.fcgl.madrid.points.model.Action;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -20,7 +22,7 @@ public class ActionRepositoryTest {
 
     @Test
     public void findByIdTest() {
-        Action action = new Action("Testing action");
+        Action action = new Action("Testing action", 1);
         entityManager.persist(action);
         entityManager.flush();
         Long actionId = action.getId();
