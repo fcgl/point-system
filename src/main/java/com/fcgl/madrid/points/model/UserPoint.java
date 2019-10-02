@@ -54,38 +54,34 @@ public class UserPoint extends AuditModel {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-
-        final UserPoint other = (UserPoint) obj;
-        if (!(this.id.equals(other.id))) {
-            return false;
-        }
-
-        if (!(this.userId.equals(other.userId))) {
-            return false;
-        }
-
-        if (!(this.totalPoints == other.totalPoints)) {
-            return false;
-        }
-
-        return tournamentPoints == other.tournamentPoints;
+    public java.lang.String toString() {
+        return "UserPoint{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", totalPoints=" + totalPoints +
+                ", tournamentPoints=" + tournamentPoints +
+                '}';
     }
 
-    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+
+        UserPoint userPoint = (UserPoint) object;
+
+        if (totalPoints != userPoint.totalPoints) return false;
+        if (tournamentPoints != userPoint.tournamentPoints) return false;
+        if (id != null ? !id.equals(userPoint.id) : userPoint.id != null) return false;
+        return userId != null ? userId.equals(userPoint.userId) : userPoint.userId == null;
+    }
+
     public int hashCode() {
-        return super.hashCode(); // FIXME
-    }
-
-    @Override
-    public String toString() {
-        return "User (" + userId + ") has " + totalPoints + " points.";
+        int result = super.hashCode();
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
+        result = 31 * result + totalPoints;
+        result = 31 * result + tournamentPoints;
+        return result;
     }
 }

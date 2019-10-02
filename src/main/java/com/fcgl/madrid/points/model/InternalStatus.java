@@ -1,32 +1,53 @@
 package com.fcgl.madrid.points.model;
+import java.util.List;
+import java.util.ArrayList;
 
 public class InternalStatus {
-    public static final InternalStatus OK = new InternalStatus(1, 200, "ok");
-    public static final InternalStatus MISSING_PARAM = new InternalStatus(2, 400, "Missing Required Param");
+    public static final InternalStatus OK = new InternalStatus(StatusCode.OK, 200, "ok");
+    public static final InternalStatus MISSING_PARAM = new InternalStatus(StatusCode.PARAM, 400, "Missing Required Param");
 
     private int code;
     private int httpCode;
-    private String message;
+    private List<String> messages;
 
     public InternalStatus() {
 
     }
 
-    public InternalStatus(int code, int httpCode, String message) {
-        this.code = code;
+    public InternalStatus(StatusCode statusCode, int httpCode, String message) {
+        this.code = statusCode.getCode();
         this.httpCode = httpCode;
-        this.message = message;
+        this.messages = new ArrayList<String>();
+        this.messages.add(message);
+    }
+
+    public InternalStatus(StatusCode statusCode, int httpCode, List<String> messages) {
+        this.code = statusCode.getCode();
+        this.httpCode = httpCode;
+        this.messages = messages;
     }
 
     public int getCode() {
-        return this.code;
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public int getHttpCode() {
-        return this.httpCode;
+        return httpCode;
     }
 
-    public String getMessage() {
-        return this.message;
+    public void setHttpCode(int httpCode) {
+        this.httpCode = httpCode;
+    }
+
+    public List<String> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<String> messages) {
+        this.messages = messages;
     }
 }
