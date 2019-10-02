@@ -1,13 +1,12 @@
 package com.fcgl.madrid.points.model;
 
 import javax.persistence.*;
-import java.time.Instant;
 
 @Entity
 @Table(name = "user_point")
-public class UserPoint {
+public class UserPoint extends AuditModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
@@ -15,10 +14,6 @@ public class UserPoint {
 
     private int totalPoints; // TODO: do we need history of points?
     private int tournamentPoints;
-
-    // TODO: add @PrePersist & @PreUpdate
-    private Long createdAt;
-    private Long updatedAt;
 
     public UserPoint() {
 
@@ -28,9 +23,6 @@ public class UserPoint {
         this.userId = userId;
         this.totalPoints = totalPoints;
         this.tournamentPoints = tournamentPoints;
-
-        this.createdAt = Instant.now().toEpochMilli();
-        this.updatedAt = this.createdAt;
     }
 
     public Long getId() {
@@ -61,55 +53,35 @@ public class UserPoint {
         this.tournamentPoints = tournamentPoints;
     }
 
-    public Long getCreatedAt() {
-        return createdAt;
-    }
-
-    public Long getUpdatedAt() {
-        return updatedAt;
-    }
-
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-
-        final UserPoint other = (UserPoint) obj;
-        if (!(this.id.equals(other.id))) {
-            return false;
-        }
-
-        if (!(this.userId.equals(other.userId))) {
-            return false;
-        }
-
-        if (!(this.totalPoints == other.totalPoints)) {
-            return false;
-        }
-
-        if (!(this.tournamentPoints == other.tournamentPoints)) {
-            return false;
-        }
-
-        if (!(this.createdAt.equals(other.createdAt))) {
-            return false;
-        }
-
-        return (this.updatedAt.equals(other.updatedAt));
+    public java.lang.String toString() {
+        return "UserPoint{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", totalPoints=" + totalPoints +
+                ", tournamentPoints=" + tournamentPoints +
+                '}';
     }
 
-    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+
+        UserPoint userPoint = (UserPoint) object;
+
+        if (totalPoints != userPoint.totalPoints) return false;
+        if (tournamentPoints != userPoint.tournamentPoints) return false;
+        if (id != null ? !id.equals(userPoint.id) : userPoint.id != null) return false;
+        return userId != null ? userId.equals(userPoint.userId) : userPoint.userId == null;
+    }
+
     public int hashCode() {
-        return super.hashCode(); // FIXME
-    }
-
-    @Override
-    public String toString() {
-        return "User (" + userId + ") has " + totalPoints + " points.";
+        int result = super.hashCode();
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
+        result = 31 * result + totalPoints;
+        result = 31 * result + tournamentPoints;
+        return result;
     }
 }

@@ -7,8 +7,8 @@ import com.fcgl.madrid.points.repository.UserTrophyRepository;
 import com.fcgl.madrid.points.model.InternalStatus;
 import com.fcgl.madrid.dev.DevService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,7 +34,7 @@ public class UserTrophyController {
         this.userTrophyService = userTrophyService;
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @GetMapping("/all")
     public List<UserTrophy> findAll() {
         return userTrophyService.findAll();
     }

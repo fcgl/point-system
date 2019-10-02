@@ -27,36 +27,27 @@ public class InternalStatus {
         this.messages = messages;
     }
 
-
     public int getCode() {
-        return this.code;
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public int getHttpCode() {
-        return this.httpCode;
+        return httpCode;
+    }
+
+    public void setHttpCode(int httpCode) {
+        this.httpCode = httpCode;
     }
 
     public List<String> getMessages() {
-        return this.messages;
+        return messages;
     }
 
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-
-        InternalStatus that = (InternalStatus) object;
-
-        if (code != that.code) return false;
-        if (httpCode != that.httpCode) return false;
-        return messages.equals(that.messages);
-    }
-
-    public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + code;
-        result = 31 * result + httpCode;
-        result = 31 * result + messages.hashCode();
-        return result;
+    public void setMessages(List<String> messages) {
+        this.messages = messages;
     }
 }

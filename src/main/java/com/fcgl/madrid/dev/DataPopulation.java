@@ -1,7 +1,9 @@
 package com.fcgl.madrid.dev;
 
-import com.fcgl.madrid.points.model.*;
-import com.fcgl.madrid.points.repository.*;
+import com.fcgl.madrid.points.model.Action;
+import com.fcgl.madrid.points.model.Trophy;
+import com.fcgl.madrid.points.repository.ActionRepository;
+import com.fcgl.madrid.points.repository.TrophyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,40 +16,27 @@ public class DataPopulation {
 
     private ActionRepository actionRepository;
     private TrophyRepository trophyRepository;
-    private UserActionRepository userActionRepository;
-    private UserPointsRepository userPointsRepository;
-    private UserTrophyRepository userTrophyRepository;
 
     @Autowired
     public DataPopulation(ActionRepository actionRepository,
-                          TrophyRepository trophyRepository,
-                          UserActionRepository userActionRepository,
-                          UserPointsRepository userPointsRepository,
-                          UserTrophyRepository userTrophyRepository) {
+                          TrophyRepository trophyRepository) {
         this.actionRepository = actionRepository;
         this.trophyRepository = trophyRepository;
-        this.userActionRepository = userActionRepository;
-        this.userPointsRepository = userPointsRepository;
-        this.userTrophyRepository = userTrophyRepository;
     }
 
     @Transactional
     @PostConstruct
     public void init() {
-        long userId = 99;
-        UserPoint userPoints = new UserPoint(userId, 10, 5);
-        userPointsRepository.save(userPoints);
+        // Action #1
+        Action addingAReceipt = new Action("Adding a receipt", 5);
+        actionRepository.save(addingAReceipt);
 
-        Action action = new Action("Adding a receipt");
-        actionRepository.save(action);
+        // Action #2
+        Action recommendingToAFriend = new Action("Recommending to a friend", 10);
+        actionRepository.save(recommendingToAFriend);
 
-        UserAction userAction = new UserAction(userId, action, 10);
-        userActionRepository.save(userAction);
-
-        Trophy trophy = new Trophy(10, "/no/where", "King of Receipts", action, 10);
+        // Trophy #1, the user has to do action #1 x3 times to earn this trophy
+        Trophy trophy = new Trophy(100, "/no/where", "King of Receipts", addingAReceipt, 3);
         trophyRepository.save(trophy);
-
-        UserTrophy userTrophy = new UserTrophy(userId, trophy);
-        userTrophyRepository.save(userTrophy);
     }
 }
