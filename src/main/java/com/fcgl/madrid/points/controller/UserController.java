@@ -1,5 +1,6 @@
 package com.fcgl.madrid.points.controller;
 
+import com.fcgl.madrid.points.payload.request.UserId;
 import com.fcgl.madrid.points.payload.response.Response;
 import com.fcgl.madrid.points.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -23,8 +25,8 @@ public class UserController {
     }
 
     @GetMapping("/summary")
-    public ResponseEntity<Response> getUserData(@NotNull Long userId) {
-        return userService.getUserData(userId);
+    public ResponseEntity<Response> getUserData(@Valid UserId userId) {
+        return userService.getUserData(userId.getUserId());
     }
 
 
