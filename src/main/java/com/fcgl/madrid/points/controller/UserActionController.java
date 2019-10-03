@@ -1,7 +1,7 @@
 package com.fcgl.madrid.points.controller;
 
-import com.fcgl.madrid.points.model.Trophy;
-import com.fcgl.madrid.points.model.UserAction;
+import com.fcgl.madrid.points.dataModel.Trophy;
+import com.fcgl.madrid.points.dataModel.UserAction;
 import com.fcgl.madrid.points.service.UserActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
-package com.fcgl.madrid.points.model.response;
+package com.fcgl.madrid.points.payload.response;
 
-import com.fcgl.madrid.points.model.UserPoint;
-import com.fcgl.madrid.points.model.InternalStatus;
+import com.fcgl.madrid.points.dataModel.UserPoint;
+import com.fcgl.madrid.points.payload.InternalStatus;
 
 
 public class GetUserPointsResponse {

@@ -1,30 +1,20 @@
 package com.fcgl.madrid.points.service;
 
-import com.fcgl.madrid.points.model.UserTrophy;
-import com.fcgl.madrid.points.model.response.GetUserTrophyResponse;
+import com.fcgl.madrid.points.dataModel.UserTrophy;
+import com.fcgl.madrid.points.payload.response.GetUserTrophyResponse;
 import com.fcgl.madrid.points.repository.UserTrophyRepository;
-import com.fcgl.madrid.points.model.InternalStatus;
-import com.fcgl.madrid.points.model.StatusCode;
-import com.fcgl.madrid.points.model.ExceptionUtil;
+import com.fcgl.madrid.points.payload.InternalStatus;
+import com.fcgl.madrid.points.payload.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.TransactionSystemException;
 
-import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-
 import java.lang.Exception;
-import java.lang.Throwable;
-import java.lang.StringBuilder;
 
-import java.util.Set;
 import java.util.List;
-import java.util.ArrayList;
 
 @Service
 public class UserTrophyService {

@@ -1,7 +1,7 @@
 package com.fcgl.madrid.dev;
 
-import com.fcgl.madrid.points.model.Action;
-import com.fcgl.madrid.points.model.Trophy;
+import com.fcgl.madrid.points.dataModel.Action;
+import com.fcgl.madrid.points.dataModel.Trophy;
 import com.fcgl.madrid.points.repository.ActionRepository;
 import com.fcgl.madrid.points.repository.TrophyRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.fcgl.madrid.points.controller;
 
-import com.fcgl.madrid.points.model.Action;
+import com.fcgl.madrid.points.dataModel.Action;
 import com.fcgl.madrid.points.service.ActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

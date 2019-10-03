@@ -1,4 +1,4 @@
-package com.fcgl.madrid.points.model;
+package com.fcgl.madrid.points.dataModel;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

@@ -1,6 +1,6 @@
 package com.fcgl.madrid.points.service;
 
-import com.fcgl.madrid.points.model.*;
+import com.fcgl.madrid.points.dataModel.*;
 import com.fcgl.madrid.points.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
