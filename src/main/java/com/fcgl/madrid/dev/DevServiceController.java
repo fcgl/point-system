@@ -1,7 +1,6 @@
 package com.fcgl.madrid.dev;
 
-import com.fcgl.madrid.points.model.InternalStatus;
-import com.fcgl.madrid.dev.DevService;
+import com.fcgl.madrid.points.payload.InternalStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

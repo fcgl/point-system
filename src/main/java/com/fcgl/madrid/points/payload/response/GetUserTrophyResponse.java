@@ -1,7 +1,7 @@
-package com.fcgl.madrid.points.model.response;
+package com.fcgl.madrid.points.payload.response;
 
-import com.fcgl.madrid.points.model.UserTrophy;
-import com.fcgl.madrid.points.model.InternalStatus;
+import com.fcgl.madrid.points.dataModel.UserTrophy;
+import com.fcgl.madrid.points.payload.InternalStatus;
 
 import java.util.List;
 

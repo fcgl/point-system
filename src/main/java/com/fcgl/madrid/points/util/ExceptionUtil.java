@@ -1,4 +1,4 @@
-package com.fcgl.madrid.points.model;
+package com.fcgl.madrid.points.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,11 +7,12 @@ import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
+import com.fcgl.madrid.points.payload.StatusCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.TransactionSystemException;
 
-import com.fcgl.madrid.points.model.InternalStatus;
+import com.fcgl.madrid.points.payload.InternalStatus;
 
 public class ExceptionUtil {
 

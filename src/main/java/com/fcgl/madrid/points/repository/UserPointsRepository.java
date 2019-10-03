@@ -1,10 +1,9 @@
 package com.fcgl.madrid.points.repository;
 
-import com.fcgl.madrid.points.model.UserPoint;
+import com.fcgl.madrid.points.dataModel.UserPoint;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import java.util.List;
 
 import java.util.Optional;
 

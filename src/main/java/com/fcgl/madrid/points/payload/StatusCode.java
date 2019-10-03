@@ -1,4 +1,4 @@
-package com.fcgl.madrid.points.model;
+package com.fcgl.madrid.points.payload;
 
 public class StatusCode {
     public static final StatusCode UNKNOWN = new StatusCode(-1);

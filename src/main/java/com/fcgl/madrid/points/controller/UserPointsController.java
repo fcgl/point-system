@@ -1,7 +1,7 @@
 package com.fcgl.madrid.points.controller;
 
-import com.fcgl.madrid.points.model.UserPoint;
-import com.fcgl.madrid.points.model.response.GetUserPointsResponse;
+import com.fcgl.madrid.points.dataModel.UserPoint;
+import com.fcgl.madrid.points.payload.response.GetUserPointsResponse;
 import com.fcgl.madrid.points.service.UserPointsService;
 import com.fcgl.madrid.dev.DevService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.fcgl.madrid.dev;
-import com.fcgl.madrid.points.model.InternalStatus;
-import com.fcgl.madrid.points.model.StatusCode;
+import com.fcgl.madrid.points.payload.InternalStatus;
+import com.fcgl.madrid.points.payload.StatusCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
