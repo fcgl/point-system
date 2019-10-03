@@ -15,4 +15,7 @@ public interface UserTrophyRepository extends JpaRepository<UserTrophy, Long> {
     List<UserTrophy> getUserTrophiesById(Long id);
 
     Optional<UserTrophy> getByUserId(Long userId);
+
+    Integer countByUserId(Long userId);
+
 }
