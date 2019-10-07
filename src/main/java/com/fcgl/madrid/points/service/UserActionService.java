@@ -1,6 +1,7 @@
 package com.fcgl.madrid.points.service;
 
 import com.fcgl.madrid.points.dataModel.*;
+import com.fcgl.madrid.points.payload.request.PostUserAction;
 import com.fcgl.madrid.points.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,27 +16,33 @@ public class UserActionService {
     private TrophyRepository trophyRepository;
     private UserTrophyRepository userTrophyRepository;
     private UserPointsRepository userPointsRepository;
+    private UserPointHistoryRepository userPointHistoryRepository;
 
     @Autowired
     public UserActionService(UserActionRepository userActionRepository,
                              ActionRepository actionRepository,
                              TrophyRepository trophyRepository,
                              UserTrophyRepository userTrophyRepository,
-                             UserPointsRepository userPointsRepository) {
+                             UserPointsRepository userPointsRepository,
+                             UserPointHistoryRepository userPointHistoryRepository) {
         this.userActionRepository = userActionRepository;
         this.actionRepository = actionRepository;
         this.trophyRepository = trophyRepository;
         this.userTrophyRepository = userTrophyRepository;
         this.userPointsRepository = userPointsRepository;
+        this.userPointHistoryRepository = userPointHistoryRepository;
     }
 
     public List<UserAction> findAll() {
         return userActionRepository.findAll();
     }
 
-    public ResponseEntity<Trophy> addUserAction(Long userID, Long actionID) {
+    public ResponseEntity<Trophy> addUserAction(PostUserAction request) {
 
         // Check that the action exists
+        String description = request.getDescription();
+        Long actionID = request.getActionID();
+        Long userID = request.getUserID();
         Action action = actionRepository.findById(actionID).orElse(null);
         if (action == null) {
             return ResponseEntity.badRequest().body(null);
@@ -47,8 +54,13 @@ public class UserActionService {
 
         Trophy trophy = getTrophy(userID, action, userAction, userPoint);
 
+        UserPointHistory userPointHistory = new UserPointHistory(userID, action, description);
+
         // Update User Points
         userPointsRepository.save(userPoint);
+        //Update User Point History
+        userPointHistoryRepository.save(userPointHistory);
+
 
         return ResponseEntity.ok().body(trophy);
     }

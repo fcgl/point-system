@@ -2,11 +2,13 @@ package com.fcgl.madrid.points.controller;
 
 import com.fcgl.madrid.points.dataModel.Trophy;
 import com.fcgl.madrid.points.dataModel.UserAction;
+import com.fcgl.madrid.points.payload.request.PostUserAction;
 import com.fcgl.madrid.points.service.UserActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -24,8 +26,8 @@ public class UserActionController {
         return userActionsService.findAll();
     }
 
-    @PostMapping("/addUserAction/{userID}/{actionID}")
-    public ResponseEntity<Trophy> AddUserAction(@PathVariable Long userID, @PathVariable Long actionID) {
-        return userActionsService.addUserAction(userID, actionID);
+    @PostMapping("/addUserAction")
+    public ResponseEntity<Trophy> AddUserAction(@Valid @RequestBody PostUserAction userAction) {
+        return userActionsService.addUserAction(userAction);
     }
 }

@@ -1,6 +1,7 @@
 package com.fcgl.madrid.points.repository;
 
 import com.fcgl.madrid.points.dataModel.Action;
+import com.fcgl.madrid.points.dataModel.PointType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class ActionRepositoryTest {
 
     @Test
     public void findByIdTest() {
-        Action action = new Action("Testing action", 1);
+        Action action = new Action(PointType.FORUM_POST, 1);
         entityManager.persist(action);
         entityManager.flush();
         Long actionId = action.getId();
