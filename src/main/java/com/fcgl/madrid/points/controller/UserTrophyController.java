@@ -1,5 +1,6 @@
 package com.fcgl.madrid.points.controller;
 
+import com.fcgl.madrid.points.payload.request.UserId;
 import com.fcgl.madrid.points.payload.response.GetUserTrophyResponse;
 import com.fcgl.madrid.points.dataModel.UserTrophy;
 import com.fcgl.madrid.points.service.UserTrophyService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,8 +22,8 @@ public class UserTrophyController {
     DevService devService;
 
     @GetMapping("/userTrophies")
-    public ResponseEntity<GetUserTrophyResponse> getUserTrophiesById(Long userId) {
-        return userTrophyService.getUserTrophiesById(userId);
+    public ResponseEntity<GetUserTrophyResponse> getUserTrophiesById(@Valid UserId userId) {
+        return userTrophyService.getUserTrophiesById(userId.getUserId());
     }
 
     @Autowired

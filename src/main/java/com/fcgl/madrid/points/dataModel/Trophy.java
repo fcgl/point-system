@@ -1,5 +1,7 @@
 package com.fcgl.madrid.points.dataModel;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,22 +15,25 @@ public class Trophy extends AuditModel {
     private String imageFileLocation;
     private String description;
     private int actionCount;
+    private String emojiName;
 
     @OneToOne
     @JoinColumn(name = "trophy_action_id")
+    @JsonBackReference
     private Action action;
 
     public Trophy() {
 
     }
 
-    public Trophy(int numberOfPoints, String imageFileLocation, String description, Action action, int actionCount) {
+    public Trophy(int numberOfPoints, String imageFileLocation, String description, Action action, int actionCount, String emojiName) {
         this.numberOfPoints = numberOfPoints;
         this.imageFileLocation = imageFileLocation;
         this.description = description;
 
         this.action = action;
         this.actionCount = actionCount;
+        this.emojiName = emojiName;
     }
 
     public Long getId() {
@@ -113,5 +118,13 @@ public class Trophy extends AuditModel {
 
     public void setActionCount(int actionCount) {
         this.actionCount = actionCount;
+    }
+
+    public String getEmojiName() {
+        return emojiName;
+    }
+
+    public void setEmojiName(String emojiName) {
+        this.emojiName = emojiName;
     }
 }
